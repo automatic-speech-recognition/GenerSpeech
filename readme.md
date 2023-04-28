@@ -23,6 +23,14 @@ Visit our [demo page](https://generspeech.github.io/) for audio samples.
   - The emotion and style features are coming from a classifier which is based on wav2vec2 backbone. This classifier is trained on Voxceleb1 dataset which probably doesnot inlcude celebrities of all accents. So we wanted to compare the metrics across various accents and look if there is any accent based discrepancy. 
   - If there is accent discrepancy we wanted to change the classifier backbone to Whisper and then do the pretraining + training again to check if anything improves.
 
+## Issues Faced
+
+- There were issues with scipy, numba versions environment.yaml. scikit-image, libopenblas were missing in the list, but were used in the code
+- In the official repo, some paths were hardcoded (the path of emotion encoder) in the Encoder/config.yaml which is present in the onedrive
+- There were many import errors in the code - like inference/Generspeech.py and other files in data_gen/tts
+-  `mfa thirdparty download` is required but not mentioned anywhere in the original repository
+- Inference doesn't work on most commonly used examples in ASR like "Six spoons of fresh snow peas ..." because many common words are not included in the mfa_dict.txt
+
 ## Key Features
 - **Multi-level Style Transfer** for expressive text-to-speech.
 - **Enhanced model generalization** to out-of-distribution (OOD) style reference.
