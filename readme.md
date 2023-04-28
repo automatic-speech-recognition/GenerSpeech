@@ -15,6 +15,14 @@ Visit our [demo page](https://generspeech.github.io/) for audio samples.
 ## News
 - December, 2022: **[GenerSpeech](https://arxiv.org/abs/2205.07211) (NeurIPS 2022)** released at Github.
 
+
+## Our Ideas
+- We wanted to evaluate the model on various use-cases rather than trying to retrain it on a different dataset.
+  - Check for the case where reference audio is noisy. We expect that the output should also be noisy.
+  - Reference audio is in a neutral or requesting tone but the target text is imperative. Because of the style-agnostic text features, we expect that the output to be according to reference audio.
+  - The emotion and style features are coming from a classifier which is based on wav2vec2 backbone. This classifier is trained on Voxceleb1 dataset which probably doesnot inlcude celebrities of all accents. So we wanted to compare the metrics across various accents and look if there is any accent based discrepancy. 
+  - If there is accent discrepancy we wanted to change the classifier backbone to Whisper and then do the pretraining + training again to check if anything improves.
+
 ## Key Features
 - **Multi-level Style Transfer** for expressive text-to-speech.
 - **Enhanced model generalization** to out-of-distribution (OOD) style reference.
